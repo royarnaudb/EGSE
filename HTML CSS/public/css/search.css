@@ -1,0 +1,164 @@
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f7f7f7;
+    color: #000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-list-left li {
+    list-style-type: none;
+    display: inline;
+    margin: 0 34px 0 0;
+}
+
+.footer-list-right li {
+    list-style-type: none;
+    display: inline;
+    margin: 0 0 0 34px;
+}
+
+.footer-list-right {
+    padding: 0 40px 0 0;
+}
+
+.header {
+    position: sticky;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #000;
+    display: flex;
+    flex-wrap: nowrap;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+
+.header-list-right {
+    padding: 0 40px 0 0;
+    margin: 0;
+}
+
+.header-list-right li{
+    list-style-type: none;
+    display: inline;
+    margin: 0 0 0 34px;
+    font-size: 24px;
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    color: #000;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 20px 70px 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+    padding-left: 40px;
+    font-size: 2.875rem;
+    font-family: 'Reggae One';
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+    font-family: 'Red Hat Display';
+    font-weight: lighter;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0 40px 0 40px;
+}
+
+input[type=text]:focus { 
+        outline: none !important;
+}
+
+input[type=text] {
+    border: none;
+    padding-left: 24px;
+    font-size: 18px;
+    font-weight: 700;
+    height: 44px;
+    font-family: 'Red Hat Display';
+    flex-grow: 1;
+}
+
+li{
+    font-family: 'Red Hat Display';
+    font-weight: lighter;
+}
+
+.input-txt-block {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 36%;
+    min-width: 400px;
+    border: 2px solid #000;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
+}
+
+body{
+    position:relative;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    font-family: arial;
+}
+  
+.price {
+    color: grey;
+    font-size: 18px;
+}
+  
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+  
+.card button:hover {
+    opacity: 0.7;
+}
+
+p {
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}

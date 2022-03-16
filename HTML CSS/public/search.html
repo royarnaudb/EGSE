@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>EGSE</title>
+        <link rel="stylesheet" href="css/search.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&family=Reggae+One&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <h1>EGSE</h1>
+            <form onsubmit="searchURL(event)">
+                <div class="input-txt-block">
+                    <input name="searchTxt" type="text" maxlength="512" autofocus/>
+                    <script type="text/javascript">
+                        const queryString = window.location.search;
+                        const urlParams = new URLSearchParams(queryString);
+                        document.getElementsByTagName('input')[0].value = urlParams.get('q').replace('+',' ')
+                        function searchURL(event){
+                            event.preventDefault();
+                            window.location = `./search.html?q=${event.target["searchTxt"].value.replace(/\s+/g, '+')}`;
+                        }
+                        
+                    </script>
+                    <img src="images/1608826_search_icon.png" width="27px" height="27px" style="margin: 8px;"/>
+                </div>
+                <img src="images/microphone_86188.png" width="30px" height="30px" style="margin: 8px;"/>
+                <img src="images/image-search.png" width="30px" height="30px" style="margin: 8px;"/>
+            </form>
+            <ul class="header-list-right">
+                <li>Burundi</li>
+                <li><img src="images/language_89801.png" style="vertical-align:middle; padding: 0 1px 6px 0;" width="23px" height="23px"/>ENG</li>
+                <li>Sign&nbspin</li>
+            </ul>
+        </header>
+        <main class="main">
+            <!--where product cards will be-->
+            <img src="images/load_data.gif" width="50px" style="padding-top: 100px;" />
+        </main>
+        <footer class="footer">
+            <ul class="footer-list-left">
+                <li>About&nbspUs</li>
+                <li>Help</li>
+                <li>Feedback</li>
+                <li>Advertise</li>
+                <li>About&nbspSearch</li>
+                <li>About&nbspAds</li>
+            </ul>
+            <ul class="footer-list-right">
+                <li>Privacy</li>
+                <li>Terms</li>
+                <li>Settings</li>
+            </ul>
+        </footer>
+        <script type="text/javascript">
+            const api_url = "https://bxk7dlnlc2.execute-api.us-east-1.amazonaws.com/opensearch-api-test?q=" + urlParams.get('q');
+            const main_html_elt = document.querySelector('.main');
+
+            async function get_data(){
+                const response = await fetch(api_url);
+                const data_obj = JSON.parse( (await response.json())["body"]);
+                const data = data_obj["hits"]["hits"];
+
+                let stop = Math.min(100, data.length)
+                if(stop == 0){
+                    main_html_elt.innerHTML = `<h4 style="padding-top: 100px"> No results found </h4>`;
+                }
+                else{
+                    main_html_elt.innerHTML = ``;
+                    for(let i = 0; i < stop; i++){
+                        let fetch = main_html_elt.innerHTML;
+                        
+                        main_html_elt.innerHTML = fetch + 
+                        `
+                        <div id="${i}" class="card">
+                            <a href="${data[i]._source.url}" target="_blank">
+                            <img src="${data[i]._source.image_url.length <= 1 ? 'images/NoImage.png' : data[i]._source.image_url}" width="200px" height="250px">
+                            <p>${data[i]._source.name.slice(0,27) + (data[i]._source.name.length > 20 ? '...' : '')}</p>
+                            <p class="price">${data[i]._source.price}<br/>
+                            From ${data[i]._source.from}</p>
+                            <p><button>Add to Cart</button></p>
+                            </a>
+                        </div>
+                        `;
+                    }
+                }
+            }
+            
+            get_data();
+        </script>
+    </body>
+</html>

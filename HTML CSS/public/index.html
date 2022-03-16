@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>EGSE</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&family=Reggae+One&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <ul class="header-list-right">
+                <li>Burundi</li>
+                <li><img src="images/language_89801.png" style="vertical-align:middle; padding: 0 1px 6px 0;" width="23px" height="23px"/>ENG</li>
+                <li>Sign in</li>
+            </ul>
+        </header>
+        <main class="main">
+            <h1>EGSE</h1>
+            <h2>E-commerce Goods Search Engine</h2>
+            <form onsubmit="searchURL(event)">
+                <div class="input-txt-block">
+                    <input name="searchTxt" type="text" maxlength="512" autofocus/>
+                    <script type="text/javascript">
+                        
+                        function searchURL(event){
+                            event.preventDefault();
+                            window.location = `./search.html?q=${event.target["searchTxt"].value.replace(/\s+/g, '+')}`;
+                        }
+                        
+                    </script>
+                    <img src="images/1608826_search_icon.png" width="27px" height="27px" style="margin: 8px;"/>
+                </div>
+                <img src="images/microphone_86188.png" width="30px" height="30px" style="margin: 8px;"/>
+                <img src="images/image-search.png" width="30px" height="30px" style="margin: 8px;"/>
+            </form>
+        </main>
+        <footer class="footer">
+            <ul class="footer-list-left">
+                <li>About Us</li>
+                <li>Help</li>
+                <li>Feedback</li>
+                <li>Advertise</li>
+                <li>About Search</li>
+                <li>About Ads</li>
+            </ul>
+            <ul class="footer-list-right">
+                <li>Privacy</li>
+                <li>Terms</li>
+                <li>Settings</li>
+            </ul>
+        </footer>
+    </body>
+</html>
